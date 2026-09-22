@@ -1,27 +1,39 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@theme {
+  --animate-pulse-fast: pulse-fast 1.5s infinite;
+  --animate-pop-in: pop-in 0.3s ease-out;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  @keyframes pulse-fast {
+    0%,
+    100% {
+      opacity: 0.5;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+  @keyframes pop-in {
+    from {
+      transform: scale(0);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
   }
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  @apply bg-gradient-to-br from-[#1e3c72] to-[#2a5298] min-h-screen text-white flex justify-center items-center p-5 m-0;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+/* Glassmorphism Global Class */
+.glass-panel {
+  @apply bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-8 w-full max-w-3xl text-center shadow-[0_8px_32px_rgba(0,0,0,0.3)];
+}
+
+.btn-primary {
+  @apply w-full p-3 mt-3 rounded-lg border-none text-base font-bold bg-[#ff9900] text-black cursor-pointer transition-transform duration-200 hover:scale-105 disabled:bg-gray-600 disabled:text-gray-400 disabled:cursor-not-allowed disabled:hover:scale-100;
 }
