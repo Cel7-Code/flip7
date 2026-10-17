@@ -321,7 +321,7 @@ function applyItemEffect(targetId, itemType, sourceName) {
     target.tempCards = [];
     target.isBusted = true;
     sendGlobalNotif(
-      `👹 DEMON! ${target.name} disantet ${sourceName}. Dia tereliminasi di ronde ini!`,
+      `👹 DEMON! ${target.name} telah di bust oleh ${sourceName}. Dia tereliminasi di ronde ini!`,
     );
     checkRoundCompletion();
   }
@@ -466,7 +466,7 @@ async function evaluatePlayer(player, callback) {
   if (new Set(nums).size !== nums.length) {
     bust = true;
     bustReason =
-      "💥 DUPLIKAT! Kamu dapat kartu kembar. Tereliminasi di ronde ini!";
+      "💥 DUPLIKAT! Anda dapat kartu kembar. Tereliminasi di ronde ini!";
   }
 
   if (bust) {
@@ -494,7 +494,7 @@ function processStand() {
   player.tempCards = [];
   player.hasStood = true;
 
-  if (player.score >= 100) {
+  if (player.score >= 200) {
     sendGlobalNotif(
       `🏆 SELAMAT! ${player.name} MEMENANGKAN GAME DENGAN ${player.score} POIN!`,
     );
